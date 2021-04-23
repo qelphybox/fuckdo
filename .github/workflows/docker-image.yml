@@ -7,16 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag docker.pkg.github.com/qelphybox/fuckdo/fuckdo:latest
-    - run: docker login docker.pkg.github.com -u qelphybox -p $(MYTOK)
+    - run: docker login docker.pkg.github.com -u qelphybox -p "$MYTOK"
       env:
         MYTOK: ${{ secrets.MYTOK }}
     - run: docker push docker.pkg.github.com/qelphybox/fuckdo/fuckdo:latest
