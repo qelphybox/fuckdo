@@ -1,1 +1,2 @@
 # Fuckdo
+GO
